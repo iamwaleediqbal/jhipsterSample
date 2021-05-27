@@ -42,6 +42,8 @@
     "jwtSecretKey": "ZDRmMTA3MWUzNmFiMDhmNzNmN2M2YWYxZjUyZmFiMzc5YjkwZmE0NTRjNDkxMjE1YmNmYjg5MjUyNDNhMGY1YWUxMGFmZTY5ZTVlOTNhMTg0NTdhN2EwNjllOWI2NGU1OWJmNjhkMmNmYWQyMzI5YjAzOWM0YTUwYmE2ODdiY2I=",
     "clientTheme": "none",
     "clientThemeVariant": "",
-    "reactive": false
+    "reactive": false,
+    "entities": ["Region", "Country", "Location", "Department", "Task", "Employee", "Job", "JobHistory"],
+    "lastLiquibaseTimestamp": 1622115314000
   }
 }
