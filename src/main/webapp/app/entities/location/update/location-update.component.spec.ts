@@ -42,10 +42,10 @@ describe('Component Tests', () => {
     describe('ngOnInit', () => {
       it('Should call country query and add missing value', () => {
         const location: ILocation = { id: 456 };
-        const country: ICountry = { id: 45185 };
+        const country: ICountry = { id: 84665 };
         location.country = country;
 
-        const countryCollection: ICountry[] = [{ id: 82050 }];
+        const countryCollection: ICountry[] = [{ id: 62947 }];
         spyOn(countryService, 'query').and.returnValue(of(new HttpResponse({ body: countryCollection })));
         const expectedCollection: ICountry[] = [country, ...countryCollection];
         spyOn(countryService, 'addCountryToCollectionIfMissing').and.returnValue(expectedCollection);
@@ -60,7 +60,7 @@ describe('Component Tests', () => {
 
       it('Should update editForm', () => {
         const location: ILocation = { id: 456 };
-        const country: ICountry = { id: 5164 };
+        const country: ICountry = { id: 74079 };
         location.country = country;
 
         activatedRoute.data = of({ location });

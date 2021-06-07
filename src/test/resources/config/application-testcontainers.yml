@@ -13,8 +13,8 @@ spring:
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: org.testcontainers.jdbc.ContainerDatabaseDriver
     url: jdbc:tc:postgresql:13.2:///jhipsterSample?TC_TMPFS=/testtmpfs:rw
-    username: jhipsterSample
-    password:
+    username: postgres
+    password: root
     hikari:
       poolName: Hikari
       auto-commit: false

@@ -59,6 +59,18 @@
         </div>
 
         <div class="form-group">
+          <label class="form-control-label" jhiTranslate="jhipsterSampleApp.location.appartment" for="field_appartment">Appartment</label>
+          <input
+            type="text"
+            class="form-control"
+            name="appartment"
+            id="field_appartment"
+            data-cy="appartment"
+            formControlName="appartment"
+          />
+        </div>
+
+        <div class="form-group">
           <label class="form-control-label" jhiTranslate="jhipsterSampleApp.location.country" for="field_country">Country</label>
           <select class="form-control" id="field_country" data-cy="country" name="country" formControlName="country">
             <option [ngValue]="null"></option>

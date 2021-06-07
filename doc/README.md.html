@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>README.md</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="doc-style.css" />
+  <script src="doc-filelist.js"></script>
+  <script>
+    var relativeDir = "";
+    var thisFile = "README.md";
+    var defaultSidebar = true;
+  </script>
+  <script src="doc-script.js"></script>
+
+</head>
+<body>
+  <div id="sidebar_wrapper">
+    <div id="sidebar_switch">
+      <span class="tree">Files</span>
+      <span class="headings">Headings</span>
+    </div>
+    <div id="tree"></div>
+    <div id="headings">
+
+      <div class="heading h1">
+        <a href="#jhipstersample">jhipsterSample</a>
+      </div>
+
+      <div class="heading h2">
+        <a href="#development">Development</a>
+      </div>
+
+      <div class="heading h3">
+        <a href="#pwa-support">PWA Support</a>
+      </div>
+
+      <div class="heading h3">
+        <a href="#managing-dependencies">Managing dependencies</a>
+      </div>
+
+      <div class="heading h3">
+        <a href="#using-angular-cli">Using Angular CLI</a>
+      </div>
+
+      <div class="heading h3">
+        <a href="#doing-api-first-development-using-openapi-generator">Doing API-First development using openapi-generator</a>
+      </div>
+
+      <div class="heading h2">
+        <a href="#building-for-production">Building for production</a>
+      </div>
+
+      <div class="heading h3">
+        <a href="#packaging-as-jar">Packaging as jar</a>
+      </div>
+
+      <div class="heading h3">
+        <a href="#packaging-as-war">Packaging as war</a>
+      </div>
+
+      <div class="heading h2">
+        <a href="#testing">Testing</a>
+      </div>
+
+      <div class="heading h3">
+        <a href="#client-tests">Client tests</a>
+      </div>
+
+      <div class="heading h3">
+        <a href="#code-quality">Code quality</a>
+      </div>
+
+      <div class="heading h2">
+        <a href="#using-docker-to-simplify-development-optional">Using Docker to simplify development (optional)</a>
+      </div>
+
+      <div class="heading h2">
+        <a href="#continuous-integration-optional">Continuous Integration (optional)</a>
+      </div>
+
+    </div>
+  </div>
+  <div id="sidebar-toggle"></div>
+  <div id="container">
+    <div class="docs markdown"><div class="pilwrap" id="jhipstersample">
+  <h1>
+    <a href="#jhipstersample" name="jhipstersample" class="pilcrow"></a>
+jhipsterSample
+  </h1>
+</div>
+<p>This application was generated using JHipster 7.0.1, you can find documentation and help at <a href="https://www.jhipster.tech/documentation-archive/v7.0.1">https://www.jhipster.tech/documentation-archive/v7.0.1</a>.</p>
+<div class="pilwrap" id="development">
+  <h2>
+    <a href="#development" name="development" class="pilcrow"></a>
+Development
+  </h2>
+</div>
+<p>Before you can build this project, you must install and configure the following dependencies on your machine:</p>
+<ol>
+<li><a href="https://nodejs.org/">Node.js</a>: We use Node to run a development web server and build the project.
+Depending on your system, you can install Node either from source or as a pre-packaged bundle.</li>
+</ol>
+<p>After installing Node, you should be able to run the following command to install development tools.
+You will only need to run this command when dependencies change in <a href="package.json.html">package.json</a>.</p>
+<pre><code>npm install
+</code></pre>
+<p>We use npm scripts and <a href="https://cli.angular.io/">Angular CLI</a> with <a href="https://webpack.github.io/">Webpack</a> as our build system.</p>
+<p>Run the following commands in two separate terminals to create a blissful development experience where your browser
+auto-refreshes when files change on your hard drive.</p>
+<pre><code>./mvnw
+npm start
+</code></pre>
+<p>Npm is also used to manage CSS and JavaScript dependencies used in this application. You can upgrade dependencies by
+specifying a newer version in <a href="package.json.html">package.json</a>. You can also run <code>npm update</code> and <code>npm install</code> to manage dependencies.
+Add the <code>help</code> flag on any command to see how you can use it. For example, <code>npm help update</code>.</p>
+<p>The <code>npm run</code> command will list all of the scripts available to run for this project.</p>
+<div class="pilwrap" id="pwa-support">
+  <h3>
+    <a href="#pwa-support" name="pwa-support" class="pilcrow"></a>
+PWA Support
+  </h3>
+</div>
+<p>JHipster ships with PWA (Progressive Web App) support, and it's turned off by default. One of the main components of a PWA is a service worker.</p>
+<p>The service worker initialization code is disabled by default. To enable it, uncomment the following code in <code>src/main/webapp/app/app.module.ts</code>:</p>
+<pre><code class="typescript">ServiceWorkerModule.register(<span class="hljs-string">'ngsw-worker.js'</span>, { enabled: <span class="hljs-literal">false</span> }),
+</code></pre>
+<div class="pilwrap" id="managing-dependencies">
+  <h3>
+    <a href="#managing-dependencies" name="managing-dependencies" class="pilcrow"></a>
+Managing dependencies
+  </h3>
+</div>
+<p>For example, to add <a href="https://leafletjs.com/">Leaflet</a> library as a runtime dependency of your application, you would run following command:</p>
+<pre><code>npm install --save --save-exact leaflet
+</code></pre>
+<p>To benefit from TypeScript type definitions from <a href="https://definitelytyped.org/">DefinitelyTyped</a> repository in development, you would run following command:</p>
+<pre><code>npm install --save-dev --save-exact @types/leaflet
+</code></pre>
+<p>Then you would import the JS and CSS files specified in library's installation instructions so that <a href="https://webpack.github.io/">Webpack</a> knows about them:
+Edit <a href="src/main/webapp/app/app.module.ts.html">src/main/webapp/app/app.module.ts</a> file:</p>
+<pre><code>import 'leaflet/dist/leaflet.js';
+</code></pre>
+<p>Edit <a href="src/main/webapp/content/scss/vendor.scss.html">src/main/webapp/content/scss/vendor.scss</a> file:</p>
+<pre><code>@import '~leaflet/dist/leaflet.css';
+</code></pre>
+<p>Note: There are still a few other things remaining to do for Leaflet that we won't detail here.</p>
+<p>For further instructions on how to develop with JHipster, have a look at <a href="https://www.jhipster.tech/documentation-archive/v7.0.1/development/">Using JHipster in development</a>.</p>
+<div class="pilwrap" id="using-angular-cli">
+  <h3>
+    <a href="#using-angular-cli" name="using-angular-cli" class="pilcrow"></a>
+Using Angular CLI
+  </h3>
+</div>
+<p>You can also use <a href="https://cli.angular.io/">Angular CLI</a> to generate some custom client code.</p>
+<p>For example, the following command:</p>
+<pre><code>ng generate component my-component
+</code></pre>
+<p>will generate few files:</p>
+<pre><code>create src/main/webapp/app/my-component/my-component.component.html
+create src/main/webapp/app/my-component/my-component.component.ts
+update src/main/webapp/app/app.module.ts
+</code></pre>
+<div class="pilwrap" id="doing-api-first-development-using-openapi-generator">
+  <h3>
+    <a href="#doing-api-first-development-using-openapi-generator" name="doing-api-first-development-using-openapi-generator" class="pilcrow"></a>
+Doing API-First development using openapi-generator
+  </h3>
+</div>
+<p><a href=".html">OpenAPI-Generator</a> is configured for this application. You can generate API code from the <code>src/main/resources/swagger/api.yml</code> definition file by running:</p>
+<pre><code class="bash">./mvnw generate-sources
+</code></pre>
+<p>Then implements the generated delegate classes with <code>@Service</code> classes.</p>
+<p>To edit the <code>api.yml</code> definition file, you can use a tool such as <a href=".html">Swagger-Editor</a>. Start a local instance of the swagger-editor using docker by running: <code>docker-compose -f src/main/docker/swagger-editor.yml up -d</code>. The editor will then be reachable at <a href="http://localhost:7742">http://localhost:7742</a>.</p>
+<p>Refer to <a href="https://www.jhipster.tech/documentation-archive/v7.0.1/doing-api-first-development/">Doing API-First development</a> for more details.</p>
+<div class="pilwrap" id="building-for-production">
+  <h2>
+    <a href="#building-for-production" name="building-for-production" class="pilcrow"></a>
+Building for production
+  </h2>
+</div>
+<div class="pilwrap" id="packaging-as-jar">
+  <h3>
+    <a href="#packaging-as-jar" name="packaging-as-jar" class="pilcrow"></a>
+Packaging as jar
+  </h3>
+</div>
+<p>To build the final jar and optimize the jhipsterSample application for production, run:</p>
+<pre><code>./mvnw -Pprod clean verify
+</code></pre>
+<p>This will concatenate and minify the client CSS and JavaScript files. It will also modify <code>index.html</code> so it references these new files.
+To ensure everything worked, run:</p>
+<pre><code>java -jar target/*.jar
+</code></pre>
+<p>Then navigate to <a href="http://localhost:8089">http://localhost:8089</a> in your browser.</p>
+<p>Refer to <a href="https://www.jhipster.tech/documentation-archive/v7.0.1/production/">Using JHipster in production</a> for more details.</p>
+<div class="pilwrap" id="packaging-as-war">
+  <h3>
+    <a href="#packaging-as-war" name="packaging-as-war" class="pilcrow"></a>
+Packaging as war
+  </h3>
+</div>
+<p>To package your application as a war in order to deploy it to an application server, run:</p>
+<pre><code>./mvnw -Pprod,war clean verify
+</code></pre>
+<div class="pilwrap" id="testing">
+  <h2>
+    <a href="#testing" name="testing" class="pilcrow"></a>
+Testing
+  </h2>
+</div>
+<p>To launch your application's tests, run:</p>
+<pre><code>./mvnw verify
+</code></pre>
+<div class="pilwrap" id="client-tests">
+  <h3>
+    <a href="#client-tests" name="client-tests" class="pilcrow"></a>
+Client tests
+  </h3>
+</div>
+<p>Unit tests are run by <a href="https://facebook.github.io/jest/">Jest</a>. They're located in <a href="src/test/javascript/.html">src/test/javascript/</a> and can be run with:</p>
+<pre><code>npm test
+</code></pre>
+<p>For more information, refer to the <a href="https://www.jhipster.tech/documentation-archive/v7.0.1/running-tests/">Running tests page</a>.</p>
+<div class="pilwrap" id="code-quality">
+  <h3>
+    <a href="#code-quality" name="code-quality" class="pilcrow"></a>
+Code quality
+  </h3>
+</div>
+<p>Sonar is used to analyse code quality. You can start a local Sonar server (accessible on http://localhost:9001) with:</p>
+<pre><code>docker-compose -f src/main/docker/sonar.yml up -d
+</code></pre>
+<p>Note: we have turned off authentication in <a href="src/main/docker/sonar.yml.html">src/main/docker/sonar.yml</a> for out of the box experience while trying out SonarQube, for real use cases turn it back on.</p>
+<p>You can run a Sonar analysis with using the <a href="https://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner">sonar-scanner</a> or by using the maven plugin.</p>
+<p>Then, run a Sonar analysis:</p>
+<pre><code>./mvnw -Pprod clean verify sonar:sonar
+</code></pre>
+<p>If you need to re-run the Sonar phase, please be sure to specify at least the <code>initialize</code> phase since Sonar properties are loaded from the sonar-project.properties file.</p>
+<pre><code>./mvnw initialize sonar:sonar
+</code></pre>
+<p>For more information, refer to the <a href="https://www.jhipster.tech/documentation-archive/v7.0.1/code-quality/">Code quality page</a>.</p>
+<div class="pilwrap" id="using-docker-to-simplify-development-optional">
+  <h2>
+    <a href="#using-docker-to-simplify-development-optional" name="using-docker-to-simplify-development-optional" class="pilcrow"></a>
+Using Docker to simplify development (optional)
+  </h2>
+</div>
+<p>You can use Docker to improve your JHipster development experience. A number of docker-compose configuration are available in the <a href="src/main/docker.html">src/main/docker</a> folder to launch required third party services.</p>
+<p>For example, to start a postgresql database in a docker container, run:</p>
+<pre><code>docker-compose -f src/main/docker/postgresql.yml up -d
+</code></pre>
+<p>To stop it and remove the container, run:</p>
+<pre><code>docker-compose -f src/main/docker/postgresql.yml down
+</code></pre>
+<p>You can also fully dockerize your application and all the services that it depends on.
+To achieve this, first build a docker image of your app by running:</p>
+<pre><code>./mvnw -Pprod verify jib:dockerBuild
+</code></pre>
+<p>Then run:</p>
+<pre><code>docker-compose -f src/main/docker/app.yml up -d
+</code></pre>
+<p>For more information refer to <a href="https://www.jhipster.tech/documentation-archive/v7.0.1/docker-compose">Using Docker and Docker-Compose</a>, this page also contains information on the docker-compose sub-generator (<code>jhipster docker-compose</code>), which is able to generate docker configurations for one or several JHipster applications.</p>
+<div class="pilwrap" id="continuous-integration-optional">
+  <h2>
+    <a href="#continuous-integration-optional" name="continuous-integration-optional" class="pilcrow"></a>
+Continuous Integration (optional)
+  </h2>
+</div>
+<p>To configure CI for your project, run the ci-cd sub-generator (<code>jhipster ci-cd</code>), this will let you generate configuration files for a number of Continuous Integration systems. Consult the <a href="https://www.jhipster.tech/documentation-archive/v7.0.1/setting-up-ci/">Setting up Continuous Integration</a> page for more information.</p>
+</div>
+  </div>
+</body>
+</html>

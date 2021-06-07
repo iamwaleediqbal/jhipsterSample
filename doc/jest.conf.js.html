@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>jest.conf.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="doc-style.css" />
+  <script src="doc-filelist.js"></script>
+  <script>
+    var relativeDir = "";
+    var thisFile = "jest.conf.js";
+    var defaultSidebar = true;
+  </script>
+  <script src="doc-script.js"></script>
+
+</head>
+<body>
+  <div id="sidebar_wrapper">
+    <div id="sidebar_switch">
+      <span class="tree">Files</span>
+      <span class="headings">Headings</span>
+    </div>
+    <div id="tree"></div>
+    <div id="headings">
+
+    </div>
+  </div>
+  <div id="sidebar-toggle"></div>
+  <div id="container">
+    <div class="background highlight"></div>
+<table cellpadding="0" cellspacing="0">
+  <tbody>
+    
+      <tr>
+        <td class="docs">
+          <h1>jest.conf.js</h1>
+        </td>
+        <td class="code highlight"></td>
+      </tr>
+    
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-1" id="section-1"></a>
+</div>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript"><span class="hljs-keyword">const</span> tsconfig = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./tsconfig.json'</span>);
+
+<span class="hljs-built_in">module</span>.exports = {
+  <span class="hljs-attr">setupFiles</span>: [<span class="hljs-string">'jest-date-mock'</span>],
+  <span class="hljs-attr">cacheDirectory</span>: <span class="hljs-string">'&lt;rootDir&gt;/target/jest-cache'</span>,
+  <span class="hljs-attr">coverageDirectory</span>: <span class="hljs-string">'&lt;rootDir&gt;/target/test-results/'</span>,
+  <span class="hljs-attr">moduleNameMapper</span>: mapTypescriptAliasToJestAlias(),
+  <span class="hljs-attr">reporters</span>: [<span class="hljs-string">'default'</span>, [<span class="hljs-string">'jest-junit'</span>, { <span class="hljs-attr">outputDirectory</span>: <span class="hljs-string">'./target/test-results/'</span>, <span class="hljs-attr">outputName</span>: <span class="hljs-string">'TESTS-results-jest.xml'</span> }]],
+  <span class="hljs-attr">testResultsProcessor</span>: <span class="hljs-string">'jest-sonar-reporter'</span>,
+  <span class="hljs-attr">testMatch</span>: [<span class="hljs-string">'&lt;rootDir&gt;/src/main/webapp/app/**/@(*.)@(spec.ts)'</span>],
+  <span class="hljs-attr">testURL</span>: <span class="hljs-string">'http://localhost/'</span>,
+};
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">mapTypescriptAliasToJestAlias</span>(<span class="hljs-params">alias = {}</span>) </span>{
+  <span class="hljs-keyword">const</span> jestAliases = { ...alias };
+  <span class="hljs-keyword">if</span> (!tsconfig.compilerOptions.paths) {
+    <span class="hljs-keyword">return</span> jestAliases;
+  }
+  <span class="hljs-built_in">Object</span>.entries(tsconfig.compilerOptions.paths)
+    .filter(<span class="hljs-function">(<span class="hljs-params">[key, value]</span>) =&gt;</span> {
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-2" id="section-2"></a>
+</div>
+<p>use Typescript alias in Jest only if this has value</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">      <span class="hljs-keyword">if</span> (value.length) {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+      }
+      <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+    })
+    .map(<span class="hljs-function">(<span class="hljs-params">[key, value]</span>) =&gt;</span> {
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-3" id="section-3"></a>
+</div>
+<p>if Typescript alias ends with /* then in Jest:</p>
+<ul>
+<li>alias key must end with /(.*)</li>
+<li>alias value must end with /$1</li>
+</ul>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">      <span class="hljs-keyword">const</span> regexToReplace = <span class="hljs-regexp">/(.*)\/\*$/</span>;
+      <span class="hljs-keyword">const</span> aliasKey = key.replace(regexToReplace, <span class="hljs-string">'$1/(.*)'</span>);
+      <span class="hljs-keyword">const</span> aliasValue = value[<span class="hljs-number">0</span>].replace(regexToReplace, <span class="hljs-string">'$1/$$1'</span>);
+      <span class="hljs-keyword">return</span> [aliasKey, <span class="hljs-string">`&lt;rootDir&gt;/<span class="hljs-subst">${aliasValue}</span>`</span>];
+    })
+    .reduce(<span class="hljs-function">(<span class="hljs-params">aliases, [key, value]</span>) =&gt;</span> {
+      aliases[key] = value;
+      <span class="hljs-keyword">return</span> aliases;
+    }, jestAliases);
+  <span class="hljs-keyword">return</span> jestAliases;
+}
+
+</pre>
+        </td>
+      </tr>
+    
+  </tbody>
+</table>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>.gitlab-ci.yml</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="doc-style.css" />
+  <script src="doc-filelist.js"></script>
+  <script>
+    var relativeDir = "";
+    var thisFile = ".gitlab-ci.yml";
+    var defaultSidebar = true;
+  </script>
+  <script src="doc-script.js"></script>
+
+</head>
+<body>
+  <div id="sidebar_wrapper">
+    <div id="sidebar_switch">
+      <span class="tree">Files</span>
+      <span class="headings">Headings</span>
+    </div>
+    <div id="tree"></div>
+    <div id="headings">
+
+    </div>
+  </div>
+  <div id="sidebar-toggle"></div>
+  <div id="container">
+    <div class="background highlight"></div>
+<table cellpadding="0" cellspacing="0">
+  <tbody>
+    
+      <tr>
+        <td class="docs">
+          <h1>.gitlab-ci.yml</h1>
+        </td>
+        <td class="code highlight"></td>
+      </tr>
+    
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-1" id="section-1"></a>
+</div>
+
+        </td>
+        <td class="code highlight">
+          <pre class="yaml"><span class="hljs-attr">image:</span> <span class="hljs-string">jhipster/jhipster:v7.0.1</span>
+
+<span class="hljs-attr">cache:</span>
+  <span class="hljs-attr">key:</span> <span class="hljs-string">'$CI_COMMIT_REF_NAME'</span>
+  <span class="hljs-attr">paths:</span>
+    <span class="hljs-bullet">-</span> <span class="hljs-string">.maven/</span>
+<span class="hljs-attr">stages:</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">check</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">build</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">test</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">analyze</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">package</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">release</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">deploy</span>
+<span class="hljs-attr">before_script:</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">export</span> <span class="hljs-string">NG_CLI_ANALYTICS="false"</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">export</span> <span class="hljs-string">MAVEN_USER_HOME=`pwd`/.maven</span>
+
+<span class="hljs-attr">nohttp:</span>
+  <span class="hljs-attr">stage:</span> <span class="hljs-string">check</span>
+  <span class="hljs-attr">script:</span>
+    <span class="hljs-bullet">-</span> <span class="hljs-string">./mvnw</span> <span class="hljs-string">-ntp</span> <span class="hljs-string">checkstyle:check</span> <span class="hljs-string">-Dmaven.repo.local=$MAVEN_USER_HOME</span>
+
+<span class="hljs-attr">maven-compile:</span>
+  <span class="hljs-attr">stage:</span> <span class="hljs-string">build</span>
+  <span class="hljs-attr">script:</span>
+    <span class="hljs-bullet">-</span> <span class="hljs-string">./mvnw</span> <span class="hljs-string">-ntp</span> <span class="hljs-string">compile</span> <span class="hljs-string">-P-webapp</span> <span class="hljs-string">-Dmaven.repo.local=$MAVEN_USER_HOME</span>
+  <span class="hljs-attr">artifacts:</span>
+    <span class="hljs-attr">paths:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">target/classes/</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">target/generated-sources/</span>
+    <span class="hljs-attr">expire_in:</span> <span class="hljs-number">1</span> <span class="hljs-string">day</span>
+
+<span class="hljs-attr">maven-test:</span>
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-2" id="section-2"></a>
+</div>
+<p>DinD service is required for Testcontainers</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="yaml">  <span class="hljs-attr">services:</span>
+    <span class="hljs-bullet">-</span> <span class="hljs-string">docker:dind</span>
+
+  <span class="hljs-attr">variables:</span>
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-3" id="section-3"></a>
+</div>
+<p>Instruct Testcontainers to use the daemon of DinD.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="yaml">    <span class="hljs-attr">DOCKER_HOST:</span> <span class="hljs-string">'tcp://docker:2375'</span>
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-4" id="section-4"></a>
+</div>
+<p>Improve performance with overlayfs.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="yaml">    <span class="hljs-attr">DOCKER_DRIVER:</span> <span class="hljs-string">overlay2</span>
+
+  <span class="hljs-attr">stage:</span> <span class="hljs-string">test</span>
+  <span class="hljs-attr">script:</span>
+    <span class="hljs-bullet">-</span> <span class="hljs-string">./mvnw</span> <span class="hljs-string">-ntp</span> <span class="hljs-string">verify</span> <span class="hljs-string">-P-webapp</span> <span class="hljs-string">-Dmaven.repo.local=$MAVEN_USER_HOME</span> <span class="hljs-string">-Dspring.profiles.active=testcontainers</span>
+  <span class="hljs-attr">artifacts:</span>
+    <span class="hljs-attr">reports:</span>
+      <span class="hljs-attr">junit:</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-string">target/surefire-reports/TEST-*.xml</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-string">target/failsafe-reports/TEST-*.xml</span>
+    <span class="hljs-attr">paths:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">target/surefire-reports</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">target/failsafe-reports</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">target/site</span>
+    <span class="hljs-attr">expire_in:</span> <span class="hljs-number">1</span> <span class="hljs-string">day</span>
+
+<span class="hljs-attr">frontend-test:</span>
+  <span class="hljs-attr">stage:</span> <span class="hljs-string">test</span>
+  <span class="hljs-attr">script:</span>
+    <span class="hljs-bullet">-</span> <span class="hljs-string">npm</span> <span class="hljs-string">install</span>
+    <span class="hljs-bullet">-</span> <span class="hljs-string">npm</span> <span class="hljs-string">test</span>
+  <span class="hljs-attr">artifacts:</span>
+    <span class="hljs-attr">reports:</span>
+      <span class="hljs-attr">junit:</span> <span class="hljs-string">target/test-results/TESTS-results-jest.xml</span>
+    <span class="hljs-attr">paths:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">target/test-results</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">target/jacoco</span>
+    <span class="hljs-attr">expire_in:</span> <span class="hljs-number">1</span> <span class="hljs-string">day</span>
+<span class="hljs-attr">sonar-analyze:</span>
+  <span class="hljs-attr">stage:</span> <span class="hljs-string">analyze</span>
+  <span class="hljs-attr">dependencies:</span>
+    <span class="hljs-bullet">-</span> <span class="hljs-string">maven-test</span>
+    <span class="hljs-bullet">-</span> <span class="hljs-string">frontend-test</span>
+  <span class="hljs-attr">script:</span>
+    <span class="hljs-bullet">-</span> <span class="hljs-string">./mvnw</span> <span class="hljs-string">-ntp</span> <span class="hljs-string">org.jacoco:jacoco-maven-plugin:prepare-agent</span> <span class="hljs-string">initialize</span> <span class="hljs-string">sonar:sonar</span> <span class="hljs-string">-Dsonar.host.url=https://sonarcloud.io</span> <span class="hljs-string">-Dsonar.login=$SONAR_TOKEN</span> <span class="hljs-string">-Dmaven.repo.local=$MAVEN_USER_HOME</span>
+  <span class="hljs-attr">allow_failure:</span> <span class="hljs-literal">true</span>
+
+<span class="hljs-attr">maven-package:</span>
+  <span class="hljs-attr">stage:</span> <span class="hljs-string">package</span>
+  <span class="hljs-attr">script:</span>
+    <span class="hljs-bullet">-</span> <span class="hljs-string">./mvnw</span> <span class="hljs-string">-ntp</span> <span class="hljs-string">verify</span> <span class="hljs-string">-Pprod</span> <span class="hljs-string">-DskipTests</span> <span class="hljs-string">-Dmaven.repo.local=$MAVEN_USER_HOME</span>
+  <span class="hljs-attr">artifacts:</span>
+    <span class="hljs-attr">paths:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">target/*.jar</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">target/classes</span>
+    <span class="hljs-attr">expire_in:</span> <span class="hljs-number">1</span> <span class="hljs-string">day</span>
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-5" id="section-5"></a>
+</div>
+<p>Uncomment the following line to use gitlabs container registry. You need to adapt the REGISTRY_URL in case you are not using gitlab.com
+docker-push:
+stage: release
+variables:
+REGISTRY_URL: registry.gitlab.com
+IMAGE_TAG: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG-$CI_COMMIT_SHA
+dependencies:
+- maven-package
+script:
+- ./mvnw -ntp jib:build -Pprod -Djib.to.image=$IMAGE_TAG -Djib.to.auth.username=gitlab-ci-token  -Djib.to.auth.password=$CI_BUILD_TOKEN -Dmaven.repo.local=$MAVEN_USER_HOME</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="yaml">
+
+</pre>
+        </td>
+      </tr>
+    
+  </tbody>
+</table>
+
+  </div>
+</body>
+</html>

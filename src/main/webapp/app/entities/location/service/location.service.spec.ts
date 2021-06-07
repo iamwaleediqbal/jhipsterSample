@@ -26,6 +26,7 @@ describe('Service Tests', () => {
         postalCode: 'AAAAAAA',
         city: 'AAAAAAA',
         stateProvince: 'AAAAAAA',
+        appartment: 'AAAAAAA',
       };
     });
 
@@ -65,6 +66,7 @@ describe('Service Tests', () => {
             postalCode: 'BBBBBB',
             city: 'BBBBBB',
             stateProvince: 'BBBBBB',
+            appartment: 'BBBBBB',
           },
           elemDefault
         );
@@ -83,6 +85,7 @@ describe('Service Tests', () => {
           {
             streetAddress: 'BBBBBB',
             city: 'BBBBBB',
+            appartment: 'BBBBBB',
           },
           new Location()
         );
@@ -106,6 +109,7 @@ describe('Service Tests', () => {
             postalCode: 'BBBBBB',
             city: 'BBBBBB',
             stateProvince: 'BBBBBB',
+            appartment: 'BBBBBB',
           },
           elemDefault
         );
@@ -157,7 +161,7 @@ describe('Service Tests', () => {
         });
 
         it('should add only unique Location to an array', () => {
-          const locationArray: ILocation[] = [{ id: 123 }, { id: 456 }, { id: 96203 }];
+          const locationArray: ILocation[] = [{ id: 123 }, { id: 456 }, { id: 3491 }];
           const locationCollection: ILocation[] = [{ id: 123 }];
           expectedResult = service.addLocationToCollectionIfMissing(locationCollection, ...locationArray);
           expect(expectedResult).toHaveLength(3);

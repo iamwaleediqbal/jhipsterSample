@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>package.json</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="doc-style.css" />
+  <script src="doc-filelist.js"></script>
+  <script>
+    var relativeDir = "";
+    var thisFile = "package.json";
+    var defaultSidebar = true;
+  </script>
+  <script src="doc-script.js"></script>
+
+</head>
+<body>
+  <div id="sidebar_wrapper">
+    <div id="sidebar_switch">
+      <span class="tree">Files</span>
+      <span class="headings">Headings</span>
+    </div>
+    <div id="tree"></div>
+    <div id="headings">
+
+    </div>
+  </div>
+  <div id="sidebar-toggle"></div>
+  <div id="container">
+    <div class="background highlight"></div>
+<table cellpadding="0" cellspacing="0">
+  <tbody>
+    
+      <tr>
+        <td class="docs">
+          <h1>package.json</h1>
+        </td>
+        <td class="code highlight"></td>
+      </tr>
+    
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-1" id="section-1"></a>
+</div>
+
+        </td>
+        <td class="code highlight">
+          <pre class="json">{
+  <span class="hljs-attr">"name"</span>: <span class="hljs-string">"jhipster-sample"</span>,
+  <span class="hljs-attr">"version"</span>: <span class="hljs-string">"0.0.1-SNAPSHOT"</span>,
+  <span class="hljs-attr">"private"</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">"description"</span>: <span class="hljs-string">"Description for jhipsterSample"</span>,
+  <span class="hljs-attr">"license"</span>: <span class="hljs-string">"UNLICENSED"</span>,
+  <span class="hljs-attr">"scripts"</span>: {
+    <span class="hljs-attr">"prettier:check"</span>: <span class="hljs-string">"prettier --check \"{,src/**/,webpack/}*.{md,json,yml,html,js,ts,tsx,css,scss,java}\""</span>,
+    <span class="hljs-attr">"prettier:format"</span>: <span class="hljs-string">"prettier --write \"{,src/**/,webpack/}*.{md,json,yml,html,js,ts,tsx,css,scss,java}\""</span>,
+    <span class="hljs-attr">"lint"</span>: <span class="hljs-string">"eslint . --ext .js,.ts"</span>,
+    <span class="hljs-attr">"lint:fix"</span>: <span class="hljs-string">"npm run lint -- --fix"</span>,
+    <span class="hljs-attr">"cleanup"</span>: <span class="hljs-string">"rimraf target/classes/static/"</span>,
+    <span class="hljs-attr">"clean-www"</span>: <span class="hljs-string">"rimraf target/classes/static/app/{src,target/}"</span>,
+    <span class="hljs-attr">"jest"</span>: <span class="hljs-string">"jest --coverage --logHeapUsage --maxWorkers=2 --config jest.conf.js"</span>,
+    <span class="hljs-attr">"start"</span>: <span class="hljs-string">"ng serve --hmr"</span>,
+    <span class="hljs-attr">"start-tls"</span>: <span class="hljs-string">"npm run webapp:dev -- --env.tls"</span>,
+    <span class="hljs-attr">"serve"</span>: <span class="hljs-string">"npm run start"</span>,
+    <span class="hljs-attr">"build"</span>: <span class="hljs-string">"npm run webapp:prod"</span>,
+    <span class="hljs-attr">"pretest"</span>: <span class="hljs-string">"npm run lint"</span>,
+    <span class="hljs-attr">"test"</span>: <span class="hljs-string">"ng test --coverage --log-heap-usage -w=2"</span>,
+    <span class="hljs-attr">"test:watch"</span>: <span class="hljs-string">"npm run test -- --watch"</span>,
+    <span class="hljs-attr">"watch"</span>: <span class="hljs-string">"concurrently npm:start npm:backend:start"</span>,
+    <span class="hljs-attr">"webapp:build"</span>: <span class="hljs-string">"npm run clean-www &amp;&amp; npm run webapp:build:dev"</span>,
+    <span class="hljs-attr">"webapp:build:dev"</span>: <span class="hljs-string">"ng build"</span>,
+    <span class="hljs-attr">"webapp:build:prod"</span>: <span class="hljs-string">"ng build --prod"</span>,
+    <span class="hljs-attr">"webapp:dev"</span>: <span class="hljs-string">"ng serve"</span>,
+    <span class="hljs-attr">"webapp:dev-verbose"</span>: <span class="hljs-string">"ng serve --verbose"</span>,
+    <span class="hljs-attr">"webapp:prod"</span>: <span class="hljs-string">"npm run clean-www &amp;&amp; npm run webapp:build:prod"</span>,
+    <span class="hljs-attr">"webapp:test"</span>: <span class="hljs-string">"npm run test"</span>,
+    <span class="hljs-attr">"docker:db:up"</span>: <span class="hljs-string">"docker-compose -f src/main/docker/postgresql.yml up -d"</span>,
+    <span class="hljs-attr">"docker:db:down"</span>: <span class="hljs-string">"docker-compose -f src/main/docker/postgresql.yml down -v --remove-orphans"</span>,
+    <span class="hljs-attr">"docker:jhipster-registry:up"</span>: <span class="hljs-string">"docker-compose -f src/main/docker/jhipster-registry.yml up -d"</span>,
+    <span class="hljs-attr">"docker:jhipster-registry:down"</span>: <span class="hljs-string">"docker-compose -f src/main/docker/jhipster-registry.yml down -v --remove-orphans"</span>,
+    <span class="hljs-attr">"docker:others:await"</span>: <span class="hljs-string">"echo \"Waiting for jhipster-registry to start\" &amp;&amp; wait-on http-get://localhost:8761/management/health &amp;&amp; echo \"jhipster-registry started\""</span>,
+    <span class="hljs-attr">"predocker:others:up"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-attr">"docker:others:up"</span>: <span class="hljs-string">"npm run docker:jhipster-registry:up"</span>,
+    <span class="hljs-attr">"docker:others:down"</span>: <span class="hljs-string">"npm run docker:jhipster-registry:down"</span>,
+    <span class="hljs-attr">"ci:e2e:prepare:docker"</span>: <span class="hljs-string">"npm run docker:db:up &amp;&amp; npm run docker:others:up &amp;&amp; docker ps -a"</span>,
+    <span class="hljs-attr">"ci:e2e:prepare"</span>: <span class="hljs-string">"npm run ci:e2e:prepare:docker"</span>,
+    <span class="hljs-attr">"ci:e2e:teardown:docker"</span>: <span class="hljs-string">"npm run docker:db:down --if-present &amp;&amp; npm run docker:others:down &amp;&amp; docker ps -a"</span>,
+    <span class="hljs-attr">"ci:e2e:teardown"</span>: <span class="hljs-string">"npm run ci:e2e:teardown:docker"</span>,
+    <span class="hljs-attr">"backend:info"</span>: <span class="hljs-string">"./mvnw -ntp enforcer:display-info --batch-mode"</span>,
+    <span class="hljs-attr">"backend:doc:test"</span>: <span class="hljs-string">"./mvnw -ntp javadoc:javadoc --batch-mode"</span>,
+    <span class="hljs-attr">"backend:nohttp:test"</span>: <span class="hljs-string">"./mvnw -ntp checkstyle:check --batch-mode"</span>,
+    <span class="hljs-attr">"backend:start"</span>: <span class="hljs-string">"./mvnw -P-webapp"</span>,
+    <span class="hljs-attr">"java:jar"</span>: <span class="hljs-string">"./mvnw -ntp verify -DskipTests --batch-mode"</span>,
+    <span class="hljs-attr">"java:war"</span>: <span class="hljs-string">"./mvnw -ntp verify -DskipTests --batch-mode -Pwar"</span>,
+    <span class="hljs-attr">"java:docker"</span>: <span class="hljs-string">"./mvnw -ntp verify -DskipTests jib:dockerBuild"</span>,
+    <span class="hljs-attr">"backend:unit:test"</span>: <span class="hljs-string">"./mvnw -ntp -P-webapp verify --batch-mode -Dlogging.level.ROOT=OFF -Dlogging.level.org.zalando=OFF -Dlogging.level.tech.jhipster=OFF -Dlogging.level.com.mycompany.myapp=OFF -Dlogging.level.org.springframework=OFF -Dlogging.level.org.springframework.web=OFF -Dlogging.level.org.springframework.security=OFF"</span>,
+    <span class="hljs-attr">"java:jar:dev"</span>: <span class="hljs-string">"npm run java:jar -- -Pdev,webapp"</span>,
+    <span class="hljs-attr">"java:jar:prod"</span>: <span class="hljs-string">"npm run java:jar -- -Pprod"</span>,
+    <span class="hljs-attr">"java:war:dev"</span>: <span class="hljs-string">"npm run java:war -- -Pdev,webapp"</span>,
+    <span class="hljs-attr">"java:war:prod"</span>: <span class="hljs-string">"npm run java:war -- -Pprod"</span>,
+    <span class="hljs-attr">"java:docker:dev"</span>: <span class="hljs-string">"npm run java:docker -- -Pdev,webapp"</span>,
+    <span class="hljs-attr">"java:docker:prod"</span>: <span class="hljs-string">"npm run java:docker -- -Pprod"</span>,
+    <span class="hljs-attr">"ci:backend:test"</span>: <span class="hljs-string">"npm run backend:info &amp;&amp; npm run backend:doc:test &amp;&amp; npm run backend:nohttp:test &amp;&amp; npm run backend:unit:test"</span>,
+    <span class="hljs-attr">"ci:server:package"</span>: <span class="hljs-string">"npm run java:$npm_package_config_packaging:$npm_package_config_default_environment"</span>,
+    <span class="hljs-attr">"ci:e2e:package"</span>: <span class="hljs-string">"npm run java:$npm_package_config_packaging:$npm_package_config_default_environment -- -Pe2e -Denforcer.skip=true"</span>,
+    <span class="hljs-attr">"preci:e2e:server:start"</span>: <span class="hljs-string">"npm run docker:db:await --if-present &amp;&amp; npm run docker:others:await --if-present"</span>,
+    <span class="hljs-attr">"ci:e2e:server:start"</span>: <span class="hljs-string">"java -jar target/e2e.$npm_package_config_packaging --spring.profiles.active=$npm_package_config_default_environment -Dlogging.level.ROOT=OFF -Dlogging.level.org.zalando=OFF -Dlogging.level.tech.jhipster=OFF -Dlogging.level.com.mycompany.myapp=OFF -Dlogging.level.org.springframework=OFF -Dlogging.level.org.springframework.web=OFF -Dlogging.level.org.springframework.security=OFF --logging.level.org.springframework.web=ERROR"</span>,
+    <span class="hljs-attr">"ci:frontend:build"</span>: <span class="hljs-string">"npm run webapp:build:$npm_package_config_default_environment"</span>,
+    <span class="hljs-attr">"ci:frontend:test"</span>: <span class="hljs-string">"npm run ci:frontend:build &amp;&amp; npm test"</span>
+  },
+  <span class="hljs-attr">"config"</span>: {
+    <span class="hljs-attr">"backend_port"</span>: <span class="hljs-number">8089</span>,
+    <span class="hljs-attr">"default_environment"</span>: <span class="hljs-string">"prod"</span>,
+    <span class="hljs-attr">"packaging"</span>: <span class="hljs-string">"jar"</span>
+  },
+  <span class="hljs-attr">"dependencies"</span>: {
+    <span class="hljs-attr">"@angular/common"</span>: <span class="hljs-string">"11.2.7"</span>,
+    <span class="hljs-attr">"@angular/compiler"</span>: <span class="hljs-string">"11.2.7"</span>,
+    <span class="hljs-attr">"@angular/core"</span>: <span class="hljs-string">"11.2.7"</span>,
+    <span class="hljs-attr">"@angular/forms"</span>: <span class="hljs-string">"11.2.7"</span>,
+    <span class="hljs-attr">"@angular/localize"</span>: <span class="hljs-string">"11.2.7"</span>,
+    <span class="hljs-attr">"@angular/platform-browser"</span>: <span class="hljs-string">"11.2.7"</span>,
+    <span class="hljs-attr">"@angular/platform-browser-dynamic"</span>: <span class="hljs-string">"11.2.7"</span>,
+    <span class="hljs-attr">"@angular/router"</span>: <span class="hljs-string">"11.2.7"</span>,
+    <span class="hljs-attr">"@fortawesome/angular-fontawesome"</span>: <span class="hljs-string">"0.8.2"</span>,
+    <span class="hljs-attr">"@fortawesome/fontawesome-svg-core"</span>: <span class="hljs-string">"1.2.35"</span>,
+    <span class="hljs-attr">"@fortawesome/free-solid-svg-icons"</span>: <span class="hljs-string">"5.15.3"</span>,
+    <span class="hljs-attr">"@ng-bootstrap/ng-bootstrap"</span>: <span class="hljs-string">"9.1.0"</span>,
+    <span class="hljs-attr">"@ngx-translate/core"</span>: <span class="hljs-string">"13.0.0"</span>,
+    <span class="hljs-attr">"@ngx-translate/http-loader"</span>: <span class="hljs-string">"6.0.0"</span>,
+    <span class="hljs-attr">"bootstrap"</span>: <span class="hljs-string">"4.6.0"</span>,
+    <span class="hljs-attr">"dayjs"</span>: <span class="hljs-string">"1.10.4"</span>,
+    <span class="hljs-attr">"ngx-infinite-scroll"</span>: <span class="hljs-string">"10.0.1"</span>,
+    <span class="hljs-attr">"ngx-webstorage"</span>: <span class="hljs-string">"7.0.1"</span>,
+    <span class="hljs-attr">"rxjs"</span>: <span class="hljs-string">"6.6.7"</span>,
+    <span class="hljs-attr">"swagger-ui-dist"</span>: <span class="hljs-string">"3.46.0"</span>,
+    <span class="hljs-attr">"tslib"</span>: <span class="hljs-string">"2.1.0"</span>,
+    <span class="hljs-attr">"zone.js"</span>: <span class="hljs-string">"0.11.3"</span>
+  },
+  <span class="hljs-attr">"devDependencies"</span>: {
+    <span class="hljs-attr">"@angular-builders/custom-webpack"</span>: <span class="hljs-string">"11.1.1"</span>,
+    <span class="hljs-attr">"@angular-builders/jest"</span>: <span class="hljs-string">"11.1.1"</span>,
+    <span class="hljs-attr">"@angular-eslint/eslint-plugin"</span>: <span class="hljs-string">"2.0.2"</span>,
+    <span class="hljs-attr">"@angular/cli"</span>: <span class="hljs-string">"11.2.6"</span>,
+    <span class="hljs-attr">"@angular/compiler-cli"</span>: <span class="hljs-string">"11.2.7"</span>,
+    <span class="hljs-attr">"@angular/service-worker"</span>: <span class="hljs-string">"11.2.7"</span>,
+    <span class="hljs-attr">"@types/jest"</span>: <span class="hljs-string">"26.0.22"</span>,
+    <span class="hljs-attr">"@types/node"</span>: <span class="hljs-string">"14.14.37"</span>,
+    <span class="hljs-attr">"@typescript-eslint/eslint-plugin"</span>: <span class="hljs-string">"4.20.0"</span>,
+    <span class="hljs-attr">"@typescript-eslint/parser"</span>: <span class="hljs-string">"4.20.0"</span>,
+    <span class="hljs-attr">"browser-sync"</span>: <span class="hljs-string">"2.26.14"</span>,
+    <span class="hljs-attr">"browser-sync-webpack-plugin"</span>: <span class="hljs-string">"2.3.0"</span>,
+    <span class="hljs-attr">"concurrently"</span>: <span class="hljs-string">"6.0.0"</span>,
+    <span class="hljs-attr">"copy-webpack-plugin"</span>: <span class="hljs-string">"6.4.1"</span>,
+    <span class="hljs-attr">"eslint"</span>: <span class="hljs-string">"7.23.0"</span>,
+    <span class="hljs-attr">"eslint-config-prettier"</span>: <span class="hljs-string">"8.1.0"</span>,
+    <span class="hljs-attr">"eslint-webpack-plugin"</span>: <span class="hljs-string">"2.5.3"</span>,
+    <span class="hljs-attr">"friendly-errors-webpack-plugin"</span>: <span class="hljs-string">"1.7.0"</span>,
+    <span class="hljs-attr">"generator-jhipster"</span>: <span class="hljs-string">"7.0.1"</span>,
+    <span class="hljs-attr">"husky"</span>: <span class="hljs-string">"4.3.8"</span>,
+    <span class="hljs-attr">"jest"</span>: <span class="hljs-string">"26.6.3"</span>,
+    <span class="hljs-attr">"jest-date-mock"</span>: <span class="hljs-string">"1.0.8"</span>,
+    <span class="hljs-attr">"jest-junit"</span>: <span class="hljs-string">"12.0.0"</span>,
+    <span class="hljs-attr">"jest-sonar-reporter"</span>: <span class="hljs-string">"2.0.0"</span>,
+    <span class="hljs-attr">"lint-staged"</span>: <span class="hljs-string">"10.5.4"</span>,
+    <span class="hljs-attr">"merge-jsons-webpack-plugin"</span>: <span class="hljs-string">"1.0.21"</span>,
+    <span class="hljs-attr">"prettier"</span>: <span class="hljs-string">"2.2.1"</span>,
+    <span class="hljs-attr">"prettier-plugin-java"</span>: <span class="hljs-string">"1.0.2"</span>,
+    <span class="hljs-attr">"prettier-plugin-packagejson"</span>: <span class="hljs-string">"2.2.10"</span>,
+    <span class="hljs-attr">"rimraf"</span>: <span class="hljs-string">"3.0.2"</span>,
+    <span class="hljs-attr">"simple-progress-webpack-plugin"</span>: <span class="hljs-string">"1.1.2"</span>,
+    <span class="hljs-attr">"typescript"</span>: <span class="hljs-string">"4.1.5"</span>,
+    <span class="hljs-attr">"wait-on"</span>: <span class="hljs-string">"5.3.0"</span>,
+    <span class="hljs-attr">"webpack"</span>: <span class="hljs-string">"4.46.0"</span>,
+    <span class="hljs-attr">"webpack-bundle-analyzer"</span>: <span class="hljs-string">"4.4.0"</span>,
+    <span class="hljs-attr">"webpack-merge"</span>: <span class="hljs-string">"5.7.3"</span>,
+    <span class="hljs-attr">"webpack-notifier"</span>: <span class="hljs-string">"1.13.0"</span>
+  },
+  <span class="hljs-attr">"engines"</span>: {
+    <span class="hljs-attr">"node"</span>: <span class="hljs-string">"&gt;=14.16.0"</span>
+  },
+  <span class="hljs-attr">"cacheDirectories"</span>: [
+    <span class="hljs-string">"node_modules"</span>
+  ],
+  <span class="hljs-attr">"jestSonar"</span>: {
+    <span class="hljs-attr">"reportPath"</span>: <span class="hljs-string">"target/test-results/jest"</span>,
+    <span class="hljs-attr">"reportFile"</span>: <span class="hljs-string">"TESTS-results-sonar.xml"</span>
+  }
+}
+
+</pre>
+        </td>
+      </tr>
+    
+  </tbody>
+</table>
+
+  </div>
+</body>
+</html>

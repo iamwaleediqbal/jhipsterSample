@@ -42,10 +42,10 @@ describe('Component Tests', () => {
     describe('ngOnInit', () => {
       it('Should call location query and add missing value', () => {
         const department: IDepartment = { id: 456 };
-        const location: ILocation = { id: 3491 };
+        const location: ILocation = { id: 44189 };
         department.location = location;
 
-        const locationCollection: ILocation[] = [{ id: 44189 }];
+        const locationCollection: ILocation[] = [{ id: 80998 }];
         spyOn(locationService, 'query').and.returnValue(of(new HttpResponse({ body: locationCollection })));
         const expectedCollection: ILocation[] = [location, ...locationCollection];
         spyOn(locationService, 'addLocationToCollectionIfMissing').and.returnValue(expectedCollection);
@@ -60,7 +60,7 @@ describe('Component Tests', () => {
 
       it('Should update editForm', () => {
         const department: IDepartment = { id: 456 };
-        const location: ILocation = { id: 80998 };
+        const location: ILocation = { id: 53804 };
         department.location = location;
 
         activatedRoute.data = of({ department });

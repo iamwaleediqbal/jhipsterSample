@@ -25,6 +25,7 @@ export class LocationUpdateComponent implements OnInit {
     postalCode: [],
     city: [],
     stateProvince: [],
+    appartment: [],
     country: [],
   });
 
@@ -87,6 +88,7 @@ export class LocationUpdateComponent implements OnInit {
       postalCode: location.postalCode,
       city: location.city,
       stateProvince: location.stateProvince,
+      appartment: location.appartment,
       country: location.country,
     });
 
@@ -111,6 +113,7 @@ export class LocationUpdateComponent implements OnInit {
       postalCode: this.editForm.get(['postalCode'])!.value,
       city: this.editForm.get(['city'])!.value,
       stateProvince: this.editForm.get(['stateProvince'])!.value,
+      appartment: this.editForm.get(['appartment'])!.value,
       country: this.editForm.get(['country'])!.value,
     };
   }

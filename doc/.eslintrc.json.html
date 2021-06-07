@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>.eslintrc.json</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="doc-style.css" />
+  <script src="doc-filelist.js"></script>
+  <script>
+    var relativeDir = "";
+    var thisFile = ".eslintrc.json";
+    var defaultSidebar = true;
+  </script>
+  <script src="doc-script.js"></script>
+
+</head>
+<body>
+  <div id="sidebar_wrapper">
+    <div id="sidebar_switch">
+      <span class="tree">Files</span>
+      <span class="headings">Headings</span>
+    </div>
+    <div id="tree"></div>
+    <div id="headings">
+
+    </div>
+  </div>
+  <div id="sidebar-toggle"></div>
+  <div id="container">
+    <div class="background highlight"></div>
+<table cellpadding="0" cellspacing="0">
+  <tbody>
+    
+      <tr>
+        <td class="docs">
+          <h1>.eslintrc.json</h1>
+        </td>
+        <td class="code highlight"></td>
+      </tr>
+    
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-1" id="section-1"></a>
+</div>
+
+        </td>
+        <td class="code highlight">
+          <pre class="json">{
+  <span class="hljs-attr">"parser"</span>: <span class="hljs-string">"@typescript-eslint/parser"</span>,
+  <span class="hljs-attr">"plugins"</span>: [<span class="hljs-string">"@angular-eslint/eslint-plugin"</span>, <span class="hljs-string">"@typescript-eslint"</span>],
+  <span class="hljs-attr">"extends"</span>: [
+    <span class="hljs-string">"eslint:recommended"</span>,
+    <span class="hljs-string">"plugin:@typescript-eslint/recommended"</span>,
+    <span class="hljs-string">"plugin:@typescript-eslint/recommended-requiring-type-checking"</span>,
+    <span class="hljs-string">"plugin:@angular-eslint/recommended"</span>,
+    <span class="hljs-string">"prettier"</span>,
+    <span class="hljs-string">"eslint-config-prettier"</span>
+  ],
+  <span class="hljs-attr">"env"</span>: {
+    <span class="hljs-attr">"browser"</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">"es6"</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">"commonjs"</span>: <span class="hljs-literal">true</span>
+  },
+  <span class="hljs-attr">"parserOptions"</span>: {
+    <span class="hljs-attr">"ecmaVersion"</span>: <span class="hljs-number">2018</span>,
+    <span class="hljs-attr">"sourceType"</span>: <span class="hljs-string">"module"</span>,
+    <span class="hljs-attr">"project"</span>: <span class="hljs-string">"./tsconfig.json"</span>
+  },
+  <span class="hljs-attr">"rules"</span>: {
+    <span class="hljs-attr">"@angular-eslint/component-selector"</span>: [
+      <span class="hljs-string">"error"</span>,
+      {
+        <span class="hljs-attr">"type"</span>: <span class="hljs-string">"element"</span>,
+        <span class="hljs-attr">"prefix"</span>: <span class="hljs-string">"jhi"</span>,
+        <span class="hljs-attr">"style"</span>: <span class="hljs-string">"kebab-case"</span>
+      }
+    ],
+    <span class="hljs-attr">"@angular-eslint/directive-selector"</span>: [
+      <span class="hljs-string">"error"</span>,
+      {
+        <span class="hljs-attr">"type"</span>: <span class="hljs-string">"attribute"</span>,
+        <span class="hljs-attr">"prefix"</span>: <span class="hljs-string">"jhi"</span>,
+        <span class="hljs-attr">"style"</span>: <span class="hljs-string">"camelCase"</span>
+      }
+    ],
+    <span class="hljs-attr">"@angular-eslint/relative-url-prefix"</span>: <span class="hljs-string">"error"</span>,
+    <span class="hljs-attr">"@typescript-eslint/ban-types"</span>: [
+      <span class="hljs-string">"error"</span>,
+      {
+        <span class="hljs-attr">"extendDefaults"</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-attr">"types"</span>: {
+          <span class="hljs-attr">"{}"</span>: <span class="hljs-literal">false</span>
+        }
+      }
+    ],
+    <span class="hljs-attr">"@typescript-eslint/explicit-function-return-type"</span>: [<span class="hljs-string">"error"</span>, { <span class="hljs-attr">"allowExpressions"</span>: <span class="hljs-literal">true</span> }],
+    <span class="hljs-attr">"@typescript-eslint/explicit-module-boundary-types"</span>: <span class="hljs-string">"off"</span>,
+    <span class="hljs-attr">"@typescript-eslint/member-ordering"</span>: [
+      <span class="hljs-string">"error"</span>,
+      {
+        <span class="hljs-attr">"default"</span>: [
+          <span class="hljs-string">"public-static-field"</span>,
+          <span class="hljs-string">"protected-static-field"</span>,
+          <span class="hljs-string">"private-static-field"</span>,
+          <span class="hljs-string">"public-instance-field"</span>,
+          <span class="hljs-string">"protected-instance-field"</span>,
+          <span class="hljs-string">"private-instance-field"</span>,
+          <span class="hljs-string">"constructor"</span>,
+          <span class="hljs-string">"public-static-method"</span>,
+          <span class="hljs-string">"protected-static-method"</span>,
+          <span class="hljs-string">"private-static-method"</span>,
+          <span class="hljs-string">"public-instance-method"</span>,
+          <span class="hljs-string">"protected-instance-method"</span>,
+          <span class="hljs-string">"private-instance-method"</span>
+        ]
+      }
+    ],
+    <span class="hljs-attr">"@typescript-eslint/no-explicit-any"</span>: <span class="hljs-string">"off"</span>,
+    <span class="hljs-attr">"@typescript-eslint/no-floating-promises"</span>: <span class="hljs-string">"off"</span>,
+    <span class="hljs-attr">"@typescript-eslint/no-non-null-assertion"</span>: <span class="hljs-string">"off"</span>,
+    <span class="hljs-attr">"@typescript-eslint/no-parameter-properties"</span>: [<span class="hljs-string">"warn"</span>, { <span class="hljs-attr">"allows"</span>: [<span class="hljs-string">"public"</span>, <span class="hljs-string">"private"</span>, <span class="hljs-string">"protected"</span>] }],
+    <span class="hljs-attr">"@typescript-eslint/no-shadow"</span>: [<span class="hljs-string">"error"</span>],
+    <span class="hljs-attr">"@typescript-eslint/no-unnecessary-condition"</span>: <span class="hljs-string">"error"</span>,
+    <span class="hljs-attr">"@typescript-eslint/no-unsafe-assignment"</span>: <span class="hljs-string">"off"</span>,
+    <span class="hljs-attr">"@typescript-eslint/no-unsafe-call"</span>: <span class="hljs-string">"off"</span>,
+    <span class="hljs-attr">"@typescript-eslint/no-unsafe-member-access"</span>: <span class="hljs-string">"off"</span>,
+    <span class="hljs-attr">"@typescript-eslint/prefer-nullish-coalescing"</span>: <span class="hljs-string">"error"</span>,
+    <span class="hljs-attr">"@typescript-eslint/prefer-optional-chain"</span>: <span class="hljs-string">"error"</span>,
+    <span class="hljs-attr">"@typescript-eslint/unbound-method"</span>: <span class="hljs-string">"off"</span>,
+    <span class="hljs-attr">"arrow-body-style"</span>: <span class="hljs-string">"error"</span>,
+    <span class="hljs-attr">"curly"</span>: <span class="hljs-string">"error"</span>,
+    <span class="hljs-attr">"eqeqeq"</span>: [<span class="hljs-string">"error"</span>, <span class="hljs-string">"always"</span>, { <span class="hljs-attr">"null"</span>: <span class="hljs-string">"ignore"</span> }],
+    <span class="hljs-attr">"guard-for-in"</span>: <span class="hljs-string">"error"</span>,
+    <span class="hljs-attr">"no-bitwise"</span>: <span class="hljs-string">"error"</span>,
+    <span class="hljs-attr">"no-caller"</span>: <span class="hljs-string">"error"</span>,
+    <span class="hljs-attr">"no-console"</span>: [<span class="hljs-string">"error"</span>, { <span class="hljs-attr">"allow"</span>: [<span class="hljs-string">"warn"</span>, <span class="hljs-string">"error"</span>] }],
+    <span class="hljs-attr">"no-eval"</span>: <span class="hljs-string">"error"</span>,
+    <span class="hljs-attr">"no-labels"</span>: <span class="hljs-string">"error"</span>,
+    <span class="hljs-attr">"no-new"</span>: <span class="hljs-string">"error"</span>,
+    <span class="hljs-attr">"no-new-wrappers"</span>: <span class="hljs-string">"error"</span>,
+    <span class="hljs-attr">"object-shorthand"</span>: [<span class="hljs-string">"error"</span>, <span class="hljs-string">"always"</span>, { <span class="hljs-attr">"avoidExplicitReturnArrows"</span>: <span class="hljs-literal">true</span> }],
+    <span class="hljs-attr">"radix"</span>: <span class="hljs-string">"error"</span>,
+    <span class="hljs-attr">"spaced-comment"</span>: [<span class="hljs-string">"warn"</span>, <span class="hljs-string">"always"</span>]
+  }
+}
+
+</pre>
+        </td>
+      </tr>
+    
+  </tbody>
+</table>
+
+  </div>
+</body>
+</html>

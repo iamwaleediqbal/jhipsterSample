@@ -41,6 +41,9 @@ class LocationResourceIT {
     private static final String DEFAULT_STATE_PROVINCE = "AAAAAAAAAA";
     private static final String UPDATED_STATE_PROVINCE = "BBBBBBBBBB";
 
+    private static final String DEFAULT_APPARTMENT = "AAAAAAAAAA";
+    private static final String UPDATED_APPARTMENT = "BBBBBBBBBB";
+
     private static final String ENTITY_API_URL = "/api/locations";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
 
@@ -69,7 +72,8 @@ class LocationResourceIT {
             .streetAddress(DEFAULT_STREET_ADDRESS)
             .postalCode(DEFAULT_POSTAL_CODE)
             .city(DEFAULT_CITY)
-            .stateProvince(DEFAULT_STATE_PROVINCE);
+            .stateProvince(DEFAULT_STATE_PROVINCE)
+            .appartment(DEFAULT_APPARTMENT);
         return location;
     }
 
@@ -84,7 +88,8 @@ class LocationResourceIT {
             .streetAddress(UPDATED_STREET_ADDRESS)
             .postalCode(UPDATED_POSTAL_CODE)
             .city(UPDATED_CITY)
-            .stateProvince(UPDATED_STATE_PROVINCE);
+            .stateProvince(UPDATED_STATE_PROVINCE)
+            .appartment(UPDATED_APPARTMENT);
         return location;
     }
 
@@ -110,6 +115,7 @@ class LocationResourceIT {
         assertThat(testLocation.getPostalCode()).isEqualTo(DEFAULT_POSTAL_CODE);
         assertThat(testLocation.getCity()).isEqualTo(DEFAULT_CITY);
         assertThat(testLocation.getStateProvince()).isEqualTo(DEFAULT_STATE_PROVINCE);
+        assertThat(testLocation.getAppartment()).isEqualTo(DEFAULT_APPARTMENT);
     }
 
     @Test
@@ -145,7 +151,8 @@ class LocationResourceIT {
             .andExpect(jsonPath("$.[*].streetAddress").value(hasItem(DEFAULT_STREET_ADDRESS)))
             .andExpect(jsonPath("$.[*].postalCode").value(hasItem(DEFAULT_POSTAL_CODE)))
             .andExpect(jsonPath("$.[*].city").value(hasItem(DEFAULT_CITY)))
-            .andExpect(jsonPath("$.[*].stateProvince").value(hasItem(DEFAULT_STATE_PROVINCE)));
+            .andExpect(jsonPath("$.[*].stateProvince").value(hasItem(DEFAULT_STATE_PROVINCE)))
+            .andExpect(jsonPath("$.[*].appartment").value(hasItem(DEFAULT_APPARTMENT)));
     }
 
     @Test
@@ -163,7 +170,8 @@ class LocationResourceIT {
             .andExpect(jsonPath("$.streetAddress").value(DEFAULT_STREET_ADDRESS))
             .andExpect(jsonPath("$.postalCode").value(DEFAULT_POSTAL_CODE))
             .andExpect(jsonPath("$.city").value(DEFAULT_CITY))
-            .andExpect(jsonPath("$.stateProvince").value(DEFAULT_STATE_PROVINCE));
+            .andExpect(jsonPath("$.stateProvince").value(DEFAULT_STATE_PROVINCE))
+            .andExpect(jsonPath("$.appartment").value(DEFAULT_APPARTMENT));
     }
 
     @Test
@@ -189,7 +197,8 @@ class LocationResourceIT {
             .streetAddress(UPDATED_STREET_ADDRESS)
             .postalCode(UPDATED_POSTAL_CODE)
             .city(UPDATED_CITY)
-            .stateProvince(UPDATED_STATE_PROVINCE);
+            .stateProvince(UPDATED_STATE_PROVINCE)
+            .appartment(UPDATED_APPARTMENT);
 
         restLocationMockMvc
             .perform(
@@ -207,6 +216,7 @@ class LocationResourceIT {
         assertThat(testLocation.getPostalCode()).isEqualTo(UPDATED_POSTAL_CODE);
         assertThat(testLocation.getCity()).isEqualTo(UPDATED_CITY);
         assertThat(testLocation.getStateProvince()).isEqualTo(UPDATED_STATE_PROVINCE);
+        assertThat(testLocation.getAppartment()).isEqualTo(UPDATED_APPARTMENT);
     }
 
     @Test
@@ -277,7 +287,7 @@ class LocationResourceIT {
         Location partialUpdatedLocation = new Location();
         partialUpdatedLocation.setId(location.getId());
 
-        partialUpdatedLocation.streetAddress(UPDATED_STREET_ADDRESS).city(UPDATED_CITY);
+        partialUpdatedLocation.streetAddress(UPDATED_STREET_ADDRESS).city(UPDATED_CITY).appartment(UPDATED_APPARTMENT);
 
         restLocationMockMvc
             .perform(
@@ -295,6 +305,7 @@ class LocationResourceIT {
         assertThat(testLocation.getPostalCode()).isEqualTo(DEFAULT_POSTAL_CODE);
         assertThat(testLocation.getCity()).isEqualTo(UPDATED_CITY);
         assertThat(testLocation.getStateProvince()).isEqualTo(DEFAULT_STATE_PROVINCE);
+        assertThat(testLocation.getAppartment()).isEqualTo(UPDATED_APPARTMENT);
     }
 
     @Test
@@ -313,7 +324,8 @@ class LocationResourceIT {
             .streetAddress(UPDATED_STREET_ADDRESS)
             .postalCode(UPDATED_POSTAL_CODE)
             .city(UPDATED_CITY)
-            .stateProvince(UPDATED_STATE_PROVINCE);
+            .stateProvince(UPDATED_STATE_PROVINCE)
+            .appartment(UPDATED_APPARTMENT);
 
         restLocationMockMvc
             .perform(
@@ -331,6 +343,7 @@ class LocationResourceIT {
         assertThat(testLocation.getPostalCode()).isEqualTo(UPDATED_POSTAL_CODE);
         assertThat(testLocation.getCity()).isEqualTo(UPDATED_CITY);
         assertThat(testLocation.getStateProvince()).isEqualTo(UPDATED_STATE_PROVINCE);
+        assertThat(testLocation.getAppartment()).isEqualTo(UPDATED_APPARTMENT);
     }
 
     @Test

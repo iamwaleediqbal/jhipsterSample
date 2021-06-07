@@ -47,7 +47,7 @@ management:
           ['configprops', 'env', 'health', 'info', 'jhimetrics', 'logfile', 'loggers', 'prometheus', 'threaddump', 'caches', 'liquibase']
   endpoint:
     health:
-      show-details: when_authorized
+      show-details: WHEN_AUTHORIZED
       roles: 'ROLE_ADMIN'
       probes:
         enabled: true

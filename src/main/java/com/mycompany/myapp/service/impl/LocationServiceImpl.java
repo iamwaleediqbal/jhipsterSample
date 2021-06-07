@@ -51,6 +51,9 @@ public class LocationServiceImpl implements LocationService {
                     if (location.getStateProvince() != null) {
                         existingLocation.setStateProvince(location.getStateProvince());
                     }
+                    if (location.getAppartment() != null) {
+                        existingLocation.setAppartment(location.getAppartment());
+                    }
 
                     return existingLocation;
                 }

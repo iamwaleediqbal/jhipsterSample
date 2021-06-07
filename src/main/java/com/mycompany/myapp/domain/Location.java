@@ -35,6 +35,9 @@ public class Location implements Serializable {
     @Column(name = "state_province")
     private String stateProvince;
 
+    @Column(name = "appartment")
+    private String appartment;
+
     @JsonIgnoreProperties(value = { "region" }, allowSetters = true)
     @OneToOne
     @JoinColumn(unique = true)
@@ -106,6 +109,19 @@ public class Location implements Serializable {
         this.stateProvince = stateProvince;
     }
 
+    public String getAppartment() {
+        return this.appartment;
+    }
+
+    public Location appartment(String appartment) {
+        this.appartment = appartment;
+        return this;
+    }
+
+    public void setAppartment(String appartment) {
+        this.appartment = appartment;
+    }
+
     public Country getCountry() {
         return this.country;
     }
@@ -147,6 +163,7 @@ public class Location implements Serializable {
             ", postalCode='" + getPostalCode() + "'" +
             ", city='" + getCity() + "'" +
             ", stateProvince='" + getStateProvince() + "'" +
+            ", appartment='" + getAppartment() + "'" +
             "}";
     }
 }

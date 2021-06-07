@@ -6,6 +6,7 @@ export interface ILocation {
   postalCode?: string | null;
   city?: string | null;
   stateProvince?: string | null;
+  appartment?: string | null;
   country?: ICountry | null;
 }
 
@@ -16,6 +17,7 @@ export class Location implements ILocation {
     public postalCode?: string | null,
     public city?: string | null,
     public stateProvince?: string | null,
+    public appartment?: string | null,
     public country?: ICountry | null
   ) {}
 }

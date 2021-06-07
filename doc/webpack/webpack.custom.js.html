@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>webpack.custom.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="../doc-style.css" />
+  <script src="../doc-filelist.js"></script>
+  <script>
+    var relativeDir = "../";
+    var thisFile = "webpack\\webpack.custom.js";
+    var defaultSidebar = true;
+  </script>
+  <script src="../doc-script.js"></script>
+
+</head>
+<body>
+  <div id="sidebar_wrapper">
+    <div id="sidebar_switch">
+      <span class="tree">Files</span>
+      <span class="headings">Headings</span>
+    </div>
+    <div id="tree"></div>
+    <div id="headings">
+
+    </div>
+  </div>
+  <div id="sidebar-toggle"></div>
+  <div id="container">
+    <div class="background highlight"></div>
+<table cellpadding="0" cellspacing="0">
+  <tbody>
+    
+      <tr>
+        <td class="docs">
+          <h1>webpack.custom.js</h1>
+        </td>
+        <td class="code highlight"></td>
+      </tr>
+    
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-1" id="section-1"></a>
+</div>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript"><span class="hljs-keyword">const</span> webpack = <span class="hljs-built_in">require</span>(<span class="hljs-string">'webpack'</span>);
+<span class="hljs-keyword">const</span> { merge } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'webpack-merge'</span>);
+<span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">'path'</span>);
+<span class="hljs-keyword">const</span> MergeJsonWebpackPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">'merge-jsons-webpack-plugin'</span>);
+<span class="hljs-keyword">const</span> SimpleProgressWebpackPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">'simple-progress-webpack-plugin'</span>);
+<span class="hljs-keyword">const</span> FriendlyErrorsWebpackPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">'friendly-errors-webpack-plugin'</span>);
+<span class="hljs-keyword">const</span> BrowserSyncPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">'browser-sync-webpack-plugin'</span>);
+<span class="hljs-keyword">const</span> BundleAnalyzerPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">'webpack-bundle-analyzer'</span>).BundleAnalyzerPlugin;
+<span class="hljs-keyword">const</span> WebpackNotifierPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">'webpack-notifier'</span>);
+<span class="hljs-keyword">const</span> CopyWebpackPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">'copy-webpack-plugin'</span>);
+<span class="hljs-keyword">const</span> ESLintPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">'eslint-webpack-plugin'</span>);
+
+<span class="hljs-keyword">const</span> tls = process.env.TLS;
+
+<span class="hljs-built_in">module</span>.exports = <span class="hljs-function">(<span class="hljs-params">config, options, targetOptions</span>) =&gt;</span> {
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-2" id="section-2"></a>
+</div>
+<p>PLUGINS</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">  <span class="hljs-keyword">if</span> (config.mode === <span class="hljs-string">'development'</span>) {
+    config.plugins.push(
+      <span class="hljs-keyword">new</span> ESLintPlugin({
+        <span class="hljs-attr">extensions</span>: [<span class="hljs-string">'js'</span>, <span class="hljs-string">'ts'</span>],
+      }),
+      <span class="hljs-keyword">new</span> FriendlyErrorsWebpackPlugin(),
+      <span class="hljs-keyword">new</span> WebpackNotifierPlugin({
+        <span class="hljs-attr">title</span>: <span class="hljs-string">'Jhipster Sample'</span>,
+        <span class="hljs-attr">contentImage</span>: path.join(__dirname, <span class="hljs-string">'logo-jhipster.png'</span>),
+      })
+    );
+    <span class="hljs-keyword">if</span> (!process.env.JHI_DISABLE_WEBPACK_LOGS) {
+      config.plugins.push(
+        <span class="hljs-keyword">new</span> SimpleProgressWebpackPlugin({
+          <span class="hljs-attr">format</span>: <span class="hljs-string">'compact'</span>,
+        })
+      );
+    }
+  }
+  <span class="hljs-keyword">if</span> (targetOptions.target === <span class="hljs-string">'serve'</span> || config.watch) {
+    config.plugins.push(
+      <span class="hljs-keyword">new</span> BrowserSyncPlugin(
+        {
+          <span class="hljs-attr">host</span>: <span class="hljs-string">'localhost'</span>,
+          <span class="hljs-attr">port</span>: <span class="hljs-number">9000</span>,
+          <span class="hljs-attr">https</span>: tls,
+          <span class="hljs-attr">proxy</span>: {
+            <span class="hljs-attr">target</span>: <span class="hljs-string">`http<span class="hljs-subst">${tls ? <span class="hljs-string">'s'</span> : <span class="hljs-string">''</span>}</span>://localhost:<span class="hljs-subst">${targetOptions.target === <span class="hljs-string">'serve'</span> ? <span class="hljs-string">'4200'</span> : <span class="hljs-string">'8089'</span>}</span>`</span>,
+            <span class="hljs-attr">proxyOptions</span>: {
+              <span class="hljs-attr">changeOrigin</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">//pass the Host header to the backend unchanged  https://github.com/Browsersync/browser-sync/issues/430</span>
+            },
+          },
+          <span class="hljs-attr">socket</span>: {
+            <span class="hljs-attr">clients</span>: {
+              <span class="hljs-attr">heartbeatTimeout</span>: <span class="hljs-number">60000</span>,
+            },
+          },
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-3" id="section-3"></a>
+</div>
+<div class="dox">
+<div class="summary">
+<p>ghostMode: { // uncomment this part to disable BrowserSync ghostMode; https://github.com/jhipster/generator-jhipster/issues/11116
+clicks: false,
+location: false,
+forms: false,
+scroll: false,
+},</p>
+</div>
+<div class="body">
+</div>
+</div>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">        },
+        {
+          <span class="hljs-attr">reload</span>: targetOptions.target === <span class="hljs-string">'build'</span>, <span class="hljs-comment">// enabled for build --watch</span>
+        }
+      )
+    );
+  }
+
+  <span class="hljs-keyword">if</span> (config.mode === <span class="hljs-string">'production'</span>) {
+    config.plugins.push(
+      <span class="hljs-keyword">new</span> BundleAnalyzerPlugin({
+        <span class="hljs-attr">analyzerMode</span>: <span class="hljs-string">'static'</span>,
+        <span class="hljs-attr">openAnalyzer</span>: <span class="hljs-literal">false</span>,
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-4" id="section-4"></a>
+</div>
+<p>Webpack statistics in target folder</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">        reportFilename: <span class="hljs-string">'../stats.html'</span>,
+      }),
+      <span class="hljs-keyword">new</span> webpack.LoaderOptionsPlugin({
+        <span class="hljs-attr">minimize</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-attr">debug</span>: <span class="hljs-literal">false</span>,
+      })
+    );
+  }
+
+  <span class="hljs-keyword">const</span> patterns = [
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-5" id="section-5"></a>
+</div>
+<p>jhipster-needle-add-assets-to-webpack - JHipster will add/remove third-party resources in this array</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">  ];
+
+  <span class="hljs-keyword">if</span> (patterns.length &gt; <span class="hljs-number">0</span>) {
+    config.plugins.push(<span class="hljs-keyword">new</span> CopyWebpackPlugin({ patterns }));
+  }
+
+  config.plugins.push(
+    <span class="hljs-keyword">new</span> webpack.DefinePlugin({
+      <span class="hljs-string">'process.env'</span>: {
+        <span class="hljs-attr">BUILD_TIMESTAMP</span>: <span class="hljs-string">`'<span class="hljs-subst">${<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>().getTime()}</span>'`</span>,
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-6" id="section-6"></a>
+</div>
+<p>APP_VERSION is passed as an environment variable from the Gradle / Maven build tasks.</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">        VERSION: <span class="hljs-string">`'<span class="hljs-subst">${process.env.hasOwnProperty(<span class="hljs-string">'APP_VERSION'</span>) ? process.env.APP_VERSION : <span class="hljs-string">'DEV'</span>}</span>'`</span>,
+        <span class="hljs-attr">DEBUG_INFO_ENABLED</span>: config.mode === <span class="hljs-string">'development'</span>,
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-7" id="section-7"></a>
+</div>
+<p>The root URL for API calls, ending with a '/' - for example: <code>&quot;https://www.jhipster.tech:8081/myservice/&quot;</code>.
+If this URL is left empty (&quot;&quot;), then it will be relative to the current context.
+If you use an API server, in <code>prod</code> mode, you will need to enable CORS
+(see the <code>jhipster.cors</code> common JHipster property in the <code>application-*.yml</code> configurations)</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">        SERVER_API_URL: <span class="hljs-string">`''`</span>,
+      },
+    }),
+    <span class="hljs-keyword">new</span> MergeJsonWebpackPlugin({
+      <span class="hljs-attr">output</span>: {
+        <span class="hljs-attr">groupBy</span>: [
+          { <span class="hljs-attr">pattern</span>: <span class="hljs-string">'./src/main/webapp/i18n/en/*.json'</span>, <span class="hljs-attr">fileName</span>: <span class="hljs-string">'./i18n/en.json'</span> },
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-8" id="section-8"></a>
+</div>
+<p>jhipster-needle-i18n-language-webpack - JHipster will add/remove languages in this array</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">        ],
+      },
+    })
+  );
+
+  config = merge(
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-9" id="section-9"></a>
+</div>
+<p>jhipster-needle-add-webpack-config - JHipster will add custom config</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">    config
+  );
+
+  <span class="hljs-keyword">return</span> config;
+};
+
+</pre>
+        </td>
+      </tr>
+    
+  </tbody>
+</table>
+
+  </div>
+</body>
+</html>

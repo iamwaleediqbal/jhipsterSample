@@ -37,6 +37,7 @@
           <th scope="col"><span jhiTranslate="jhipsterSampleApp.location.postalCode">Postal Code</span></th>
           <th scope="col"><span jhiTranslate="jhipsterSampleApp.location.city">City</span></th>
           <th scope="col"><span jhiTranslate="jhipsterSampleApp.location.stateProvince">State Province</span></th>
+          <th scope="col"><span jhiTranslate="jhipsterSampleApp.location.appartment">Appartment</span></th>
           <th scope="col"><span jhiTranslate="jhipsterSampleApp.location.country">Country</span></th>
           <th scope="col"></th>
         </tr>
@@ -50,6 +51,7 @@
           <td>{{ location.postalCode }}</td>
           <td>{{ location.city }}</td>
           <td>{{ location.stateProvince }}</td>
+          <td>{{ location.appartment }}</td>
           <td>
             <div *ngIf="location.country">
               <a [routerLink]="['/country', location.country?.id, 'view']">{{ location.country?.id }}</a>

@@ -22,6 +22,7 @@
       "postalCode": "Postal Code",
       "city": "City",
       "stateProvince": "State Province",
+      "appartment": "Appartment",
       "country": "Country"
     }
   }
