@@ -14,6 +14,7 @@ entity City {
 /** not an ignored comment */
 entity Location {
 	streetAddress String,
+	apartment String,
 	postalCode String,
 	city String,
 	stateProvince String

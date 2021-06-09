@@ -1,0 +1,96 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.1.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+    <changeSet author="itswa (generated)" id="1623160828819-1">
+        <dropForeignKeyConstraint baseTableName="jhi_user_authority" constraintName="fk_authority_name"/>
+    </changeSet>
+    <changeSet author="itswa (generated)" id="1623160828819-2">
+        <dropForeignKeyConstraint baseTableName="country" constraintName="fk_country__region_id"/>
+    </changeSet>
+    <changeSet author="itswa (generated)" id="1623160828819-3">
+        <dropForeignKeyConstraint baseTableName="employee" constraintName="fk_employee__department_id"/>
+    </changeSet>
+    <changeSet author="itswa (generated)" id="1623160828819-4">
+        <dropForeignKeyConstraint baseTableName="employee" constraintName="fk_employee__manager_id"/>
+    </changeSet>
+    <changeSet author="itswa (generated)" id="1623160828819-5">
+        <dropForeignKeyConstraint baseTableName="job" constraintName="fk_job__employee_id"/>
+    </changeSet>
+    <changeSet author="itswa (generated)" id="1623160828819-6">
+        <dropForeignKeyConstraint baseTableName="job_history" constraintName="fk_job_history__department_id"/>
+    </changeSet>
+    <changeSet author="itswa (generated)" id="1623160828819-7">
+        <dropForeignKeyConstraint baseTableName="job_history" constraintName="fk_job_history__employee_id"/>
+    </changeSet>
+    <changeSet author="itswa (generated)" id="1623160828819-8">
+        <dropForeignKeyConstraint baseTableName="job_history" constraintName="fk_job_history__job_id"/>
+    </changeSet>
+    <changeSet author="itswa (generated)" id="1623160828819-9">
+        <dropForeignKeyConstraint baseTableName="rel_job__task" constraintName="fk_rel_job__task__job_id"/>
+    </changeSet>
+    <changeSet author="itswa (generated)" id="1623160828819-10">
+        <dropForeignKeyConstraint baseTableName="rel_job__task" constraintName="fk_rel_job__task__task_id"/>
+    </changeSet>
+    <changeSet author="itswa (generated)" id="1623160828819-11">
+        <dropForeignKeyConstraint baseTableName="jhi_user_authority" constraintName="fk_user_id"/>
+    </changeSet>
+    <changeSet author="itswa (generated)" id="1623160828819-12">
+        <dropUniqueConstraint constraintName="ux_country__region_id" tableName="country"/>
+    </changeSet>
+    <changeSet author="itswa (generated)" id="1623160828819-13">
+        <dropUniqueConstraint constraintName="ux_department__location_id" tableName="department"/>
+    </changeSet>
+    <changeSet author="itswa (generated)" id="1623160828819-14">
+        <dropUniqueConstraint constraintName="ux_job_history__department_id" tableName="job_history"/>
+    </changeSet>
+    <changeSet author="itswa (generated)" id="1623160828819-15">
+        <dropUniqueConstraint constraintName="ux_job_history__employee_id" tableName="job_history"/>
+    </changeSet>
+    <changeSet author="itswa (generated)" id="1623160828819-16">
+        <dropUniqueConstraint constraintName="ux_job_history__job_id" tableName="job_history"/>
+    </changeSet>
+    <changeSet author="itswa (generated)" id="1623160828819-17">
+        <dropUniqueConstraint constraintName="ux_user_email" tableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="itswa (generated)" id="1623160828819-18">
+        <dropUniqueConstraint constraintName="ux_user_login" tableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="itswa (generated)" id="1623160828819-19">
+        <dropTable tableName="city"/>
+    </changeSet>
+    <changeSet author="itswa (generated)" id="1623160828819-20">
+        <dropTable tableName="country"/>
+    </changeSet>
+    <changeSet author="itswa (generated)" id="1623160828819-21">
+        <dropTable tableName="department"/>
+    </changeSet>
+    <changeSet author="itswa (generated)" id="1623160828819-22">
+        <dropTable tableName="employee"/>
+    </changeSet>
+    <changeSet author="itswa (generated)" id="1623160828819-23">
+        <dropTable tableName="jhi_authority"/>
+    </changeSet>
+    <changeSet author="itswa (generated)" id="1623160828819-24">
+        <dropTable tableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="itswa (generated)" id="1623160828819-25">
+        <dropTable tableName="jhi_user_authority"/>
+    </changeSet>
+    <changeSet author="itswa (generated)" id="1623160828819-26">
+        <dropTable tableName="job"/>
+    </changeSet>
+    <changeSet author="itswa (generated)" id="1623160828819-27">
+        <dropTable tableName="job_history"/>
+    </changeSet>
+    <changeSet author="itswa (generated)" id="1623160828819-28">
+        <dropTable tableName="region"/>
+    </changeSet>
+    <changeSet author="itswa (generated)" id="1623160828819-29">
+        <dropTable tableName="rel_job__task"/>
+    </changeSet>
+    <changeSet author="itswa (generated)" id="1623160828819-30">
+        <dropTable tableName="task"/>
+    </changeSet>
+    <changeSet author="itswa (generated)" id="1623160828819-31">
+        <dropSequence sequenceName="sequence_generator"/>
+    </changeSet>
+</databaseChangeLog>
