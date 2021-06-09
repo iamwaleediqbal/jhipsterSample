@@ -16,6 +16,7 @@ before_script:
   - export NG_CLI_ANALYTICS="false"
   - export MAVEN_USER_HOME=`pwd`/.maven
 
+
 nohttp:
   stage: check
   script:
